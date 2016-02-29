@@ -7,7 +7,6 @@ myApp.controller('CustomersController', ['$scope', '$http', '$location', '$route
 	$scope.getCustomers = function() {
 		$http.get('/api/customers').success(function(response) {
 			$scope.customers = response;
-			console.log(response);
 		});
 	}
 
@@ -16,6 +15,21 @@ myApp.controller('CustomersController', ['$scope', '$http', '$location', '$route
 		var id = $routeParams.id;
 		$http.get('/api/customers/' + id).success(function(response) {
 			$scope.customer = response;
+		});
+	}
+
+	//get customers
+	$scope.getCustomerInvoices = function() {
+		var id = $routeParams.id;
+		$http.get('/api/invoices/customer/' + id).success(function(response) {
+			$scope.customer_invoices = response;
+		});
+	}
+
+	//add Customer
+	$scope.addCustomer = function() {
+		$http.post('/api/customers/', $scope.customer).success(function(response) {
+			window.location.href = '#/customers';
 		});
 	}
 }]);

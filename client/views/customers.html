@@ -16,7 +16,7 @@
 				<td>{{customer.first_name}} {{customer.last_name}}</td>
 				<td>{{customer.company}}</td>
 				<td>{{customer.email}}</td>
-				<td><a href="#/customers/{{customer._id}}" class="btn btn-primary">Details</a><a href="#/customers/edit/{{customer._id}}" class="btn btn-default">Edit</a><a id="deleteCustomer" ng-click="deleteCustomer(customer._id)" class="btn btn-danger">Delete</a></td>
+				<td><a href="#/customers/details/{{customer._id}}" class="btn btn-primary">Details</a><a href="#/customers/edit/{{customer._id}}" class="btn btn-default">Edit</a><a id="deleteCustomer" ng-click="deleteCustomer(customer._id)" class="btn btn-danger">Delete</a></td>
 			</tr>
 		</tbody>
 	</table>

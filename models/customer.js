@@ -13,7 +13,7 @@ var customerSchema = mongoose.Schema({
 	company: {
 		type: String
 	},
-	logoUrl: {
+	logo_url: {
 		type: String
 	},
 	email: {
@@ -53,7 +53,7 @@ module.exports.addCustomer = function(customer, callback) {
 		first_name: customer.first_name,
 		last_name: customer.last_name,
 		company: customer.company,
-		logoUrl: customer.logoUrl,
+		logo_url: customer.logo_url,
 		email: customer.email,
 		phone: customer.phone,
 		address: {
@@ -73,7 +73,7 @@ module.exports.updateCustomer = function(id, customer, options, callback) {
 		first_name: customer.first_name,
 		last_name: customer.last_name,
 		company: customer.company,
-		logoUrl: customer.logoUrl,
+		logo_url: customer.logo_url,
 		email: customer.email,
 		phone: customer.phone,
 		address: {

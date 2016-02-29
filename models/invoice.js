@@ -41,7 +41,7 @@ module.exports.getInvoiceById = function(id, callback) {
 //Add Invoice
 module.exports.addInvoice = function(invoice, callback) {
 	var add = {
-		customer: invoice.customer,
+		customer: invoice.customer_id,
 		service: invoice.service,
 		price: invoice.price,
 		due: invoice.due,
@@ -67,3 +67,9 @@ module.exports.removeInvoice = function(id, callback) {
 	var query = {_id: id};
 	Invoice.remove(query, callback);
 };
+
+//Get Customer Invoices
+module.exports.getCustomerInvoices = function(customer_id, callback, limit) {
+	var query = {customer: customer_id};
+	Invoice.find(query, callback).limit(limit).populate('customer').sort([['createdAt', 'ascending']]);
+}
