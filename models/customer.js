@@ -37,7 +37,57 @@ var customerSchema = mongoose.Schema({
 
 var Customer = module.exports = mongoose.model('Customer', customerSchema);
 
-//Get Customer
+//Get Customers
 module.exports.getCustomers = function(callback, limit) {
 	Customer.find(callback).limit(limit).sort([['first_name', 'ascending']]);
+};
+
+//Get CustomerById
+module.exports.getCustomerById = function(id, callback) {
+	Customer.findById(id, callback);
+};
+
+//Add a customer
+module.exports.addCustomer = function(customer, callback) {
+	var add = {
+		first_name: customer.first_name,
+		last_name: customer.last_name,
+		company: customer.company,
+		logoUrl: customer.logoUrl,
+		email: customer.email,
+		phone: customer.phone,
+		address: {
+			street: customer.address.street,
+			city: customer.address.city,
+			state: customer.address.state,
+			zip: customer.address.zip
+		}
+	}
+	Customer.create(add, callback);
+};
+
+//Update a customer
+module.exports.updateCustomer = function(id, customer, options, callback) {
+	var query = {_id: id};
+	var update = {
+		first_name: customer.first_name,
+		last_name: customer.last_name,
+		company: customer.company,
+		logoUrl: customer.logoUrl,
+		email: customer.email,
+		phone: customer.phone,
+		address: {
+			street: customer.address.street,
+			city: customer.address.city,
+			state: customer.address.state,
+			zip: customer.address.zip
+		}
+	}
+	Customer.findOneAndUpdate(query, update, options, callback);
+};
+
+//Delete Customer
+module.exports.removeCustomer = function(id, callback) {
+	var query = {_id: id};
+	Customer.remove(query, callback);
 };
