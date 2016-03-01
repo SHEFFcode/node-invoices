@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var customers =	require('./routes/customers');
 var invoices = require('./routes/invoices');
+var PORT = process.env.PORT || 7000;
 
 //Mongoose Connection
 mongoose.connect('mongodb://sheff:123@ds019058.mlab.com:19058/invoice');
@@ -20,5 +21,5 @@ app.get('/', function(req, res) {
 	res.send('Hello world');
 });
 
-app.listen(7000);
-console.log('Server started on port 7000....');
+app.listen(PORT);
+console.log('Server started on port ....' + PORT);
