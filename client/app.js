@@ -33,6 +33,10 @@ myApp.config(function($routeProvider) {
 		controller: 'InvoicesController',
 		templateUrl: 'views/add_invoice.html'
 	})
+	.when('/invoices/edit/:id', {
+		controller: 'InvoicesController',
+		templateUrl: 'views/edit_invoice.html'
+	})
 	.otherwise({
 		redirectTo: '/'
 	});

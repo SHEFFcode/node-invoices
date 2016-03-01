@@ -32,4 +32,17 @@ myApp.controller('CustomersController', ['$scope', '$http', '$location', '$route
 			window.location.href = '#/customers';
 		});
 	}
+
+	//update Customer
+	$scope.updateCustomer = function() {
+		$http.put('/api/customers/' + $scope.customer._id, $scope.customer).success(function(response) {
+			window.location.href = '#/customers';
+		});
+	}
+
+	$scope.deleteCustomer = function(id) {
+		$http.delete('/api/customers/' + id).success(function(response) {
+			window.location.href = '#/customers';
+		});
+	}
 }]);
